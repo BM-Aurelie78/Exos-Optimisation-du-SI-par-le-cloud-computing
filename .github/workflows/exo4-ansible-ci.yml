@@ -33,3 +33,16 @@ jobs:
           ansible-playbook -i inventory.ini playbooks/canary-patch.yml --syntax-check
           ansible-playbook -i inventory.ini playbooks/production-patch.yml --syntax-check
 
+      - name: Notification SUCCESS
+        if: success()
+        run: |
+          echo "## ✅ Smart City - Validation SUCCESS" >> "$GITHUB_STEP_SUMMARY"
+          echo "Les playbooks Ansible de l'Exercice 4 ont été validés." >> "$GITHUB_STEP_SUMMARY"
+          echo "Le pipeline peut poursuivre le processus de déploiement." >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Notification FAILURE
+        if: failure()
+        run: |
+          echo "## ❌ Smart City - Validation FAILURE" >> "$GITHUB_STEP_SUMMARY"
+          echo "La validation Ansible a échoué." >> "$GITHUB_STEP_SUMMARY"
+          echo "La promotion vers la production doit être interrompue." >> "$GITHUB_STEP_SUMMARY"
