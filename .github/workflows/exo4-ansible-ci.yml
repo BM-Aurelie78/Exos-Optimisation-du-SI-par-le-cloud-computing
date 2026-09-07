@@ -1,0 +1,35 @@
+name: Exo4 Ansible CI
+
+on:
+  push:
+    paths:
+      - "exo4-ansible/**"
+      - ".github/workflows/exo4-ansible-ci.yml"
+  pull_request:
+    paths:
+      - "exo4-ansible/**"
+      - ".github/workflows/exo4-ansible-ci.yml"
+
+jobs:
+  ansible-validation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Ansible
+        run: |
+          python -m pip install --upgrade pip
+          pip install ansible
+
+      - name: Check Ansible version
+        run: ansible --version
+
+      - name: Syntax check playbooks
+        working-directory: exo4-ansible
+        run: |
+          ansible-playbook -i inventory.ini playbooks/check-patches.yml --syntax-check
+          ansible-playbook -i inventory.ini playbooks/canary-patch.yml --syntax-check
+          ansible-playbook -i inventory.ini playbooks/production-patch.yml --syntax-check
+
