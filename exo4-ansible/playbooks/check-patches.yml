@@ -1,0 +1,20 @@
+---
+- name: Vérifier les mises à jour disponibles sur le parc Smart City
+  hosts: smartcity
+  become: true
+
+  tasks:
+    - name: Mettre à jour le cache APT
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 3600
+
+    - name: Lister les paquets pouvant être mis à jour
+      ansible.builtin.command:
+        cmd: apt list --upgradable
+      register: updates
+      changed_when: false
+
+    - name: Afficher les mises à jour disponibles
+      ansible.builtin.debug:
+        var: updates.stdout_lines
