@@ -15,6 +15,8 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - smartcity_data
 
   rabbitmq:
     image: rabbitmq:3.13-management
@@ -33,6 +35,8 @@ services:
       timeout: 5s
       retries: 5
       start_period: 120s
+    networks:
+      - smartcity_data
 
   simulator:
     build: ./sensor-simulator
@@ -172,6 +176,8 @@ services:
     command: redis-server --appendonly yes
     volumes:
       - redis-data:/data
+    networks:
+      - smartcity_data
 
   prometheus:
     image: prom/prometheus:latest
@@ -200,3 +206,13 @@ volumes:
   postgres_data:
   grafana-data:
   redis-data:
+
+networks:
+  smartcity_front:
+    name: smartcity-front-net
+    driver: bridge
+
+  smartcity_data:
+    name: smartcity-data-net
+    driver: bridge
+    internal: true
