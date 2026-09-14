@@ -1,0 +1,34 @@
+---
+- name: Patch canary Smart City
+  hosts: canary
+  become: true
+
+  tasks:
+    - name: Mettre à jour le cache APT
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 3600
+
+    - name: Mettre à jour uniquement diffutils
+      ansible.builtin.apt:
+        name: diffutils
+        state: latest
+
+    - name: Vérifier la version installée de diffutils
+      ansible.builtin.command:
+        cmd: dpkg-query -W -f='${Package} ${Version}\n' diffutils
+      register: diffutils_version
+      changed_when: false
+
+    - name: Afficher la version après patch
+      ansible.builtin.debug:
+        var: diffutils_version.stdout
+
+    - name: Vérifier si un reboot est requis
+      ansible.builtin.stat:
+        path: /var/run/reboot-required
+      register: reboot_required
+
+    - name: Afficher le statut reboot
+      ansible.builtin.debug:
+        msg: "Reboot requis : {{ reboot_required.stat.exists }}"
