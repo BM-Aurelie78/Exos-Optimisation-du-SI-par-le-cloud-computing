@@ -1,3 +1,4 @@
 .env
 Archive/MoteurCorrelation/.venv
-Archive/Api_ingestion/.venvdocker-compose.yml.backup
+Archive/Api_ingestion/.venv
+docker-compose.yml.backup
