@@ -1,0 +1,38 @@
+# Terraform
+**/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+
+# Variables sensibles Terraform
+*.tfvars
+*.tfvars.json
+
+# Clés SSH / certificats
+*.pem
+*.key
+**/authorized_keys
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+
+# Ansible / secrets
+*.vault
+vault_password*
+*.retry
+
+# Environnement
+.env
+.env.*
+
+# Sauvegardes
+*.backup
+*.bak
+
+# Fichiers temporaires
+*.swp
+*.tmp
+.DS_Storex
+tfplan
+tfplan
