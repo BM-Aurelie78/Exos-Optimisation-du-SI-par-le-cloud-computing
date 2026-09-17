@@ -53,6 +53,8 @@ services:
     depends_on:
       rabbitmq:
         condition: service_healthy
+    networks:
+      - smartcity_data
 
   pgadmin:
     image: dpage/pgadmin4:8
@@ -77,6 +79,8 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+    networks:
+      - smartcity_data
 
   notification:
     build:
@@ -88,6 +92,8 @@ services:
     depends_on:
       rabbitmq:
         condition: service_healthy
+    networks:
+      - smartcity_data
 
   ingestion:
     build:
@@ -103,6 +109,9 @@ services:
       rabbitmq:
         condition: service_healthy
     command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    networks:
+      - smartcity_front
+      - smartcity_data
 
   validation:
     build:
@@ -119,6 +128,8 @@ services:
       rabbitmq:
         condition: service_healthy
     command: uvicorn app.main:app --host 0.0.0.0 --port 8002 --reload
+    networks:
+      - smartcity_data
 
   association:
     build:
@@ -130,6 +141,8 @@ services:
       rabbitmq:
         condition: service_healthy
     command: python -m src.subscriber
+    networks:
+      - smartcity_data
 
   analyse:
     build:
@@ -153,6 +166,9 @@ services:
     command: uvicorn app.main:app --host 0.0.0.0 --port 8003 --reload
     cap_add:
       - SYS_PTRACE
+    networks:
+      - smartcity_front
+      - smartcity_data
 
   detection:
     build:

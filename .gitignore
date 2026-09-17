@@ -2,3 +2,4 @@
 Archive/MoteurCorrelation/.venv
 Archive/Api_ingestion/.venv
 docker-compose.yml.backup
+docker-compose.yml.exo5-*
