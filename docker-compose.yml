@@ -183,6 +183,8 @@ services:
       referential:
         condition: service_started
     command: python -m src.consumer
+    networks:
+      - smartcity_data
 
   redis:
     image: redis:7-alpine
