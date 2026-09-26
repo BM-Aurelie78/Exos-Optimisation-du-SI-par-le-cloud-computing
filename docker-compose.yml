@@ -68,8 +68,7 @@ services:
       context: ./services/referential-service
       dockerfile: Dockerfile
     container_name: referential_service
-    ports:
-      - "8001:8001"
+
     environment:
       POSTGRES_HOST: postgres
     depends_on:
@@ -118,8 +117,7 @@ services:
       RABBITMQ_PORT: ${RABBITMQ_PORT}
       RABBITMQ_USER: ${RABBITMQ_USER}
       RABBITMQ_PASS: ${RABBITMQ_PASS}
-    ports:
-      - "8002:8002"
+
     depends_on:
       rabbitmq:
         condition: service_healthy
