@@ -3,3 +3,12 @@ Archive/MoteurCorrelation/.venv
 Archive/Api_ingestion/.venv
 docker-compose.yml.backup
 docker-compose.yml.exo5-*
+
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+crash.log
+crash.*.log
