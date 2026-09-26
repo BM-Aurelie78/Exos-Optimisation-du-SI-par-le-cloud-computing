@@ -6,8 +6,7 @@ services:
       POSTGRES_DB: urbanhub
       POSTGRES_USER: urbanhub_user
       POSTGRES_PASSWORD: urbanhub_password
-    ports:
-      - "5433:5432"
+
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -25,10 +24,7 @@ services:
     environment:
       RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
       RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASS}
-    ports:
-      - "5672:5672"
-      - "15672:15672"
-      - "1883:1883"
+
     healthcheck:
       test: ["CMD", "rabbitmq-diagnostics", "ping"]
       interval: 10s
@@ -189,8 +185,7 @@ services:
   redis:
     image: redis:7-alpine
     container_name: urbanhub_redis
-    ports:
-      - "6379:6379"
+
     command: redis-server --appendonly yes
     volumes:
       - redis-data:/data
