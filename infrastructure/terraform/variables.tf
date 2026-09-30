@@ -21,3 +21,21 @@ variable "data_network_name" {
   type        = string
   default     = "smartcity-data-net"
 }
+
+variable "db_name" {
+  description = "Nom de la base PostgreSQL Smart City"
+  type        = string
+  default     = "urbanhub"
+}
+
+variable "db_user" {
+  description = "Utilisateur PostgreSQL Smart City"
+  type        = string
+  default     = "urbanhub_user"
+}
+
+variable "db_password" {
+  description = "Mot de passe PostgreSQL"
+  type        = string
+  sensitive   = true
+}
