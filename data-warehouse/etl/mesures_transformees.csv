@@ -1,0 +1,6 @@
+id_mesure_source,date_heure,date_mesure,heure,jour_semaine,mois,annee,ville,zone,code_polluant,nom_polluant,unite,niveau_trafic,concentration
+1,2026-11-12 08:00:00,2026-11-12,8,4,11,2026,Paris,Centre,NO2,Dioxyde d'azote,ug/m3,Élevé,52.0
+2,2026-11-12 09:00:00,2026-11-12,9,4,11,2026,Paris,Centre,NO2,Dioxyde d'azote,ug/m3,Moyen,40.0
+3,2026-11-12 10:00:00,2026-11-12,10,4,11,2026,Paris,Nord,PM10,Particules PM10,ug/m3,Faible,25.0
+4,2026-11-12 18:00:00,2026-11-12,18,4,11,2026,Lyon,Centre,NO2,Dioxyde d'azote,ug/m3,Élevé,68.0
+5,2026-11-12 19:00:00,2026-11-12,19,4,11,2026,Lyon,Sud,PM10,Particules PM10,ug/m3,Faible,18.0

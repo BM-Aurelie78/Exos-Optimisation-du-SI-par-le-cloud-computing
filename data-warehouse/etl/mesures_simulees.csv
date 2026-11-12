@@ -1,0 +1,6 @@
+id,timestamp,city,zone,pollutant,value,unit,q
+1,2026-11-12T08:00:00+00:00,Paris,Centre,NO2,52.0,ug/m3,650
+2,2026-11-12T09:00:00+00:00,Paris,Centre,NO2,40.0,ug/m3,350
+3,2026-11-12T10:00:00+00:00,Paris,Nord,PM10,25.0,ug/m3,120
+4,2026-11-12T18:00:00+00:00,Lyon,Centre,NO2,68.0,ug/m3,720
+5,2026-11-12T19:00:00+00:00,Lyon,Sud,PM10,18.0,ug/m3,180
